@@ -45,7 +45,7 @@ variable "vpc_sn_az1_priv1_cidr" {
     default = "20.0.3.0/24"
 }
 
-variable "vpc_sn_az1_priv1_cidr" {
+variable "vpc_sn_az2_priv1_cidr" {
     type    = string
     default = "20.0.4.0/24"
 }
@@ -55,7 +55,7 @@ variable "vpc_sn_az1_priv2_cidr" {
     default = "20.0.5.0/24"
 }
 
-variable "vpc_sn_az1_priv2_cidr" {
+variable "vpc_sn_az2_priv2_cidr" {
     type    = string
     default = "20.0.6.0/24"
 }
