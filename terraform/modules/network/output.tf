@@ -12,18 +12,26 @@ output "vpc_sg_priv_id" {
     value = "${aws_security_group.vpc_sg_priv.id}"
 }
 
-output "vpc_sn_pub_az1_id" {
-    value = "${aws_subnet.sn_pub_az1.id}"
+output "vpc_sn_az1_pub_id" {
+    value = "${aws_subnet.sn_az1_pub.id}"
 }
 
-output "vpc_sn_pub_az2_id" {
-    value = "${aws_subnet.sn_pub_az2.id}"
+output "vpc_sn_az2_pub_id" {
+    value = "${aws_subnet.sn_az2_pub.id}"
 }
 
-output "vpc_sn_priv_az1_id" {
-    value = "${aws_subnet.sn_priv_az1.id}"
+output "vpc_sn_az1_priv1_id" {
+    value = "${aws_subnet.sn_az1_priv1.id}"
 }
 
-output "vpc_sn_priv_az2_id" {
-    value = "${aws_subnet.sn_priv_az2.id}"
+output "vpc_sn_az2_priv1_id" {
+    value = "${aws_subnet.sn_az2_priv1.id}"
+}
+
+output "vpc_sn_az1_priv2_id" {
+    value = "${aws_subnet.sn_az1_priv2.id}"
+}
+
+output "vpc_sn_az2_priv2_id" {
+    value = "${aws_subnet.sn_az2_priv1.id}"
 }
