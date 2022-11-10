@@ -25,10 +25,10 @@ module "front" {
     front_ec2_asg_desired_capacity = "${var.front_ec2_asg_desired_capacity}"
     front_ec2_asg_min_size         = "${var.front_ec2_asg_min_size}"
     front_ec2_asg_max_size         = "${var.front_ec2_asg_max_size}"
+    network_vpc_cidr               = "${var.vpc_cidr}"
     network_vpc_id                 = "${module.network.vpc_id}"
     network_vpc_sn_az1_pub_id      = "${module.network.vpc_sn_az1_pub_id}"
     network_vpc_sn_az2_pub_id      = "${module.network.vpc_sn_az2_pub_id}"
-    network_vpc_sg_pub_id          = "${module.network.vpc_sg_pub_id}"
 }
 
 # module "database" {

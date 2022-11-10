@@ -1,5 +1,6 @@
 # NETWORK VARS DEFAULT VALUES (INPUT IS REQUIRED BECAUSE NO DEFAULT IS DEFINED)
 
+variable "network_vpc_cidr" {}
 variable "network_vpc_id" {}
 variable "network_vpc_sn_az1_pub_id" {}
 variable "network_vpc_sn_az2_pub_id" {}
@@ -81,4 +82,37 @@ variable "front_ec2_asg_min_size" {
 variable "front_ec2_asg_max_size" {
     type    = number
     default = 16
+}
+
+
+# SECURITY GROUP VARS DEFAULT VALUES
+
+variable "front_sg_cidr_all" {
+    type    = string
+    default = "0.0.0.0/0"
+}
+
+variable "front_sg_port_all" {
+    type    = number
+    default = 0
+}
+
+variable "front_sg_port_ssh" {
+    type    = number
+    default = 22
+}
+
+variable "front_sg_port_http" {
+    type    = number
+    default = 80
+}
+
+variable "front_sg_protocol_any" {
+    type    = string
+    default = "-1"
+}
+
+variable "front_sg_protocol_tcp" {
+    type    = string
+    default = "tcp"
 }

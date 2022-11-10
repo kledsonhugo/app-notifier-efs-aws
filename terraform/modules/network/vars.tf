@@ -59,31 +59,3 @@ variable "vpc_sn_az2_priv2_cidr" {
     type    = string
     default = "20.0.6.0/24"
 }
-
-
-# SECURITY GROUP VARS DEFAULT VALUES
-
-variable "vpc_sg_port_all" {
-    type    = number
-    default = 0
-}
-
-variable "vpc_sg_port_ssh" {
-    type    = number
-    default = 22
-}
-
-variable "vpc_sg_port_http" {
-    type    = number
-    default = 80
-}
-
-variable "vpc_sg_protocol_any" {
-    type    = string
-    default = "-1"
-}
-
-variable "vpc_sg_protocol_tcp" {
-    type    = string
-    default = "tcp"
-}
