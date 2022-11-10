@@ -15,20 +15,38 @@ module "network" {
 
 module "front" {
     source                         = "./modules/front"
-    front_ec2_lt_name              = "${var.front_ec2_lt_name}"
-    front_ec2_lt_ami               = "${var.front_ec2_lt_ami}"
-    front_ec2_lt_instance_type     = "${var.front_ec2_lt_instance_type}"
-    front_ec2_lt_ssh_key_name      = "${var.front_ec2_lt_ssh_key_name}"
-    front_ec2_lb_name              = "${var.front_ec2_lb_name}"
-    front_ec2_lb_tg_name           = "${var.front_ec2_lb_tg_name}"
-    front_ec2_asg_name             = "${var.front_ec2_asg_name}"
-    front_ec2_asg_desired_capacity = "${var.front_ec2_asg_desired_capacity}"
-    front_ec2_asg_min_size         = "${var.front_ec2_asg_min_size}"
-    front_ec2_asg_max_size         = "${var.front_ec2_asg_max_size}"
+    back_ec2_lt_name              = "${var.back_ec2_lt_name}"
+    back_ec2_lt_ami               = "${var.back_ec2_lt_ami}"
+    back_ec2_lt_instance_type     = "${var.back_ec2_lt_instance_type}"
+    back_ec2_lt_ssh_key_name      = "${var.back_ec2_lt_ssh_key_name}"
+    back_ec2_lb_name              = "${var.back_ec2_lb_name}"
+    back_ec2_lb_tg_name           = "${var.back_ec2_lb_tg_name}"
+    back_ec2_asg_name             = "${var.back_ec2_asg_name}"
+    back_ec2_asg_desired_capacity = "${var.back_ec2_asg_desired_capacity}"
+    back_ec2_asg_min_size         = "${var.back_ec2_asg_min_size}"
+    back_ec2_asg_max_size         = "${var.back_ec2_asg_max_size}"
     network_vpc_cidr               = "${var.vpc_cidr}"
     network_vpc_id                 = "${module.network.vpc_id}"
     network_vpc_sn_az1_pub_id      = "${module.network.vpc_sn_az1_pub_id}"
     network_vpc_sn_az2_pub_id      = "${module.network.vpc_sn_az2_pub_id}"
+}
+
+module "back" {
+    source                        = "./modules/back"
+    back_ec2_lt_name              = "${var.back_ec2_lt_name}"
+    back_ec2_lt_ami               = "${var.back_ec2_lt_ami}"
+    back_ec2_lt_instance_type     = "${var.back_ec2_lt_instance_type}"
+    back_ec2_lt_ssh_key_name      = "${var.back_ec2_lt_ssh_key_name}"
+    back_ec2_lb_name              = "${var.back_ec2_lb_name}"
+    back_ec2_lb_tg_name           = "${var.back_ec2_lb_tg_name}"
+    back_ec2_asg_name             = "${var.back_ec2_asg_name}"
+    back_ec2_asg_desired_capacity = "${var.back_ec2_asg_desired_capacity}"
+    back_ec2_asg_min_size         = "${var.back_ec2_asg_min_size}"
+    back_ec2_asg_max_size         = "${var.back_ec2_asg_max_size}"
+    network_vpc_cidr              = "${var.vpc_cidr}"
+    network_vpc_id                = "${module.network.vpc_id}"
+    network_vpc_sn_az1_priv1_id   = "${module.network.vpc_sn_az1_priv1_id}"
+    network_vpc_sn_az2_priv1_id   = "${module.network.vpc_sn_az2_priv1_id}"
 }
 
 # module "database" {

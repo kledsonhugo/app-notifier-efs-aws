@@ -79,7 +79,7 @@ variable "vpc_sn_az2_priv2_cidr" {
 # }
 
 
-# COMPUTE VARS CUSTOM VALUES
+# FRONT VARS CUSTOM VALUES
 
 variable "front_ec2_lt_name" {
     type    = string
@@ -118,15 +118,68 @@ variable "front_ec2_asg_name" {
 
 variable "front_ec2_asg_desired_capacity" {
     type    = number
-    default = 4
+    default = 2
 }
 
 variable "front_ec2_asg_min_size" {
     type    = number
-    default = 2
+    default = 1
 }
 
 variable "front_ec2_asg_max_size" {
+    type    = number
+    default = 4
+}
+
+
+# BACK VARS CUSTOM VALUES
+
+variable "back_ec2_lt_name" {
+    type    = string
+    default = "back-ec2-lt-notifier"
+}
+
+variable "back_ec2_lt_ami" {
+    type    = string
+    default = "ami-05fa00d4c63e32376"
+}
+
+variable "back_ec2_lt_instance_type" {
+    type    = string
+    default = "t2.micro"
+}
+
+variable "back_ec2_lt_ssh_key_name" {
+    type    = string
+    default = "vockey"
+}
+
+variable "back_ec2_lb_name" {
+    type    = string
+    default = "back-ec2-lb-notifier"
+}
+
+variable "back_ec2_lb_tg_name" {
+    type    = string
+    default = "back-ec2-lb-tg-notifier"
+}
+
+variable "back_ec2_asg_name" {
+    type    = string
+    default = "back-ec2-asg-notifier"
+}
+
+variable "back_ec2_asg_desired_capacity" {
+    type    = number
+    default = 4
+}
+
+variable "back_ec2_asg_min_size" {
+    type    = number
+    default = 2
+}
+
+variable "back_ec2_asg_max_size" {
     type    = number
     default = 8
 }
