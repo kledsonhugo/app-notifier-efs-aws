@@ -14,7 +14,7 @@ module "network" {
 }
 
 module "front" {
-    source                   = "./modules/front"
+    source                         = "./modules/front"
     front_ec2_lt_name              = "${var.front_ec2_lt_name}"
     front_ec2_lt_ami               = "${var.front_ec2_lt_ami}"
     front_ec2_lt_instance_type     = "${var.front_ec2_lt_instance_type}"

@@ -1,6 +1,6 @@
 # RESOURCE: EC2 LAUNCH TEMPLATE
 
-resource "aws_launch_template" "ec2_lt" {
+resource "aws_launch_template" "front_ec2_lt" {
     name                   = "${var.front_ec2_lt_name}"
     image_id               = "${var.front_ec2_lt_ami}"
     instance_type          = "${var.front_ec2_lt_instance_type}"
