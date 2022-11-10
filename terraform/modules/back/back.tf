@@ -23,6 +23,8 @@ resource "aws_efs_file_system" "efs" {
   encrypted = false
 }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_efs_file_system_policy" "efs_policy" {
   file_system_id                     = aws_efs_file_system.efs.id
   bypass_policy_lockout_safety_check = true
@@ -92,7 +94,7 @@ resource "aws_lb_listener" "back_ec2_lb_listener" {
 # RESOURCE: AUTO SCALING GROUP
 
 data "template_file" "user_data" {
-  template = file("./scripts/user_data.sh")
+  template = file("./back/scripts/user_data.sh")
   vars = {
     efs_id = aws_efs_file_system.efs.id
   }
