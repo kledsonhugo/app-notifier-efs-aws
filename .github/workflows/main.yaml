@@ -54,7 +54,6 @@ jobs:
               -chdir=$WORKDIR
               plan
               -input=false
-              # -lock=false
               -destroy
               -out tfplan
 
@@ -64,7 +63,6 @@ jobs:
               apply
               -auto-approve
               -input=false
-              -lock=false
               tfplan
 
     - name: Step 09 - Terraform Show
