@@ -54,7 +54,7 @@ jobs:
               -chdir=$WORKDIR
               plan
               -input=false
-              -lock=false
+              # -lock=false
               -destroy
               -out tfplan
 
