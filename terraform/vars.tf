@@ -88,7 +88,7 @@ variable "front_ec2_lt_name" {
 
 variable "front_ec2_lt_ami" {
     type    = string
-    default = "ami-05fa00d4c63e32376"
+    default = "ami-02e136e904f3da870"
 }
 
 variable "front_ec2_lt_instance_type" {
@@ -141,7 +141,7 @@ variable "back_ec2_lt_name" {
 
 variable "back_ec2_lt_ami" {
     type    = string
-    default = "ami-05fa00d4c63e32376"
+    default = "ami-02e136e904f3da870"
 }
 
 variable "back_ec2_lt_instance_type" {
