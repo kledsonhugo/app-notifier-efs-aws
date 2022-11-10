@@ -48,35 +48,35 @@ variable "vpc_sn_az2_priv2_cidr" {
 
 # DATABASE VARS CUSTOM VALUES
 
-# variable "rds_identifier" {
-#     type    = string
-#     default = "rds-notifier"
-# }
+variable "rds_identifier" {
+    type    = string
+    default = "rds-notifier"
+}
 
-# variable "rds_sn_group_name" {
-#     type    = string
-#     default = "rds-sn-group-notifier"
-# }
+variable "rds_sn_group_name" {
+    type    = string
+    default = "rds-sn-group-notifier"
+}
 
-# variable "rds_param_group_name" {
-#     type    = string
-#     default = "rds-param-group-notifier"
-# }
+variable "rds_param_group_name" {
+    type    = string
+    default = "rds-param-group-notifier"
+}
 
-# variable "rds_dbname" {
-#     type    = string
-#     default = "rdsdbnotifier"
-# }
+variable "rds_dbname" {
+    type    = string
+    default = "rdsdbnotifier"
+}
 
-# variable "rds_dbuser" {
-#     type    = string
-#     default = "rdsdbadmin"
-# }
+variable "rds_dbuser" {
+    type    = string
+    default = "rdsdbadmin"
+}
 
-# variable "rds_dbpassword" {
-#     type    = string
-#     default = "rdsdbadminpwd"
-# }
+variable "rds_dbpassword" {
+    type    = string
+    default = "rdsdbadminpwd"
+}
 
 
 # FRONT VARS CUSTOM VALUES
