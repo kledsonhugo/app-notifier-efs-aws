@@ -48,7 +48,7 @@ jobs:
       run : terraform plan \
               -chdir=./terraform \
               -input=false \
-              # -lock=false \
+              -lock=false \
               -destroy \
               -out tfplan
 
@@ -57,7 +57,7 @@ jobs:
               -chdir=./terraform \
               -auto-approve \
               -input=false \
-              # -lock=false \
+              -lock=false \
               tfplan
 
     - name: Step 09 - Terraform Show
