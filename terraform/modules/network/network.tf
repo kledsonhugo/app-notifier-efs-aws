@@ -66,13 +66,13 @@ resource "aws_nat_gateway" "ngw_az1_pub" {
     depends_on    = [aws_internet_gateway.igw]
 }
 
-resource "aws_eip" "eip_ngw_az1_pub" {
+resource "aws_eip" "eip_ngw_az2_pub" {
     depends_on = [aws_internet_gateway.igw]
 }
 
-resource "aws_nat_gateway" "ngw_az1_pub" {
-    allocation_id = aws_eip.eip_ngw_az1_pub.id
-    subnet_id     = aws_subnet.sn_az1_pub.id
+resource "aws_nat_gateway" "ngw_az2_pub" {
+    allocation_id = aws_eip.eip_ngw_az2_pub.id
+    subnet_id     = aws_subnet.sn_az2_pub.id
     depends_on    = [aws_internet_gateway.igw]
 }
 
