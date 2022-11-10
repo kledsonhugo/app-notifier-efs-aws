@@ -12,7 +12,7 @@ resource "aws_security_group" "data_sg" {
         from_port   = "${var.data_sg_port_all}"
         to_port     = "${var.data_sg_port_all}"
         protocol    = "${var.data_sg_protocol_any}"
-        cidr_blocks = ["${var.network_vpc_cidr}"]
+        cidr_blocks = ["${var.network_vpc_sn_az1_priv1_cidr}", "${var.network_vpc_sn_az2_priv1_cidr}"]
     }
 }
 
