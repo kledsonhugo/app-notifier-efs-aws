@@ -43,7 +43,7 @@ jobs:
 
     - name: Step 07 - Terraform Plan
       # run : terraform -chdir=./terraform plan -input=false -out tfplan
-      run : terraform -chdir=./terraform plan -input=false -destroy -out tfplan
+      run : terraform -chdir=./terraform plan -input=false -destroy -out tfplan -lock=false
 
     - name: Step 08 - Terraform Apply
       run : terraform -chdir=./terraform apply -auto-approve -input=false tfplan
