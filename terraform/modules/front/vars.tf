@@ -4,7 +4,6 @@ variable "network_vpc_cidr" {}
 variable "network_vpc_id" {}
 variable "network_vpc_sn_az1_pub_id" {}
 variable "network_vpc_sn_az2_pub_id" {}
-variable "network_vpc_sg_pub_id" {}
 
 
 # COMPUTE VARS DEFAULT VALUES
