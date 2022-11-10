@@ -93,7 +93,7 @@ resource "aws_lb_listener" "back_ec2_lb_listener" {
 
 # RESOURCE: AUTO SCALING GROUP
 
-data "template_file" "user_data" {
+data "template_file" "user_data_back" {
   template = file("./modules/back/scripts/user_data.sh")
   vars = {
     efs_id = aws_efs_file_system.efs.id
@@ -105,7 +105,7 @@ resource "aws_launch_template" "back_ec2_lt" {
     image_id               = "${var.back_ec2_lt_ami}"
     instance_type          = "${var.back_ec2_lt_instance_type}"
     key_name               = "${var.back_ec2_lt_ssh_key_name}"
-    user_data              = base64encode(data.template_file.user_data.rendered)
+    user_data              = base64encode(data.template_file.user_data_back.rendered)
     vpc_security_group_ids = [aws_security_group.back_sg.id]
 }
 

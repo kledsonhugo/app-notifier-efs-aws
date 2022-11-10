@@ -29,17 +29,6 @@ resource "aws_security_group" "front_sg" {
 }
 
 
-# RESOURCE: EC2 LAUNCH TEMPLATE
-
-resource "aws_launch_template" "front_ec2_lt" {
-    name                   = "${var.front_ec2_lt_name}"
-    image_id               = "${var.front_ec2_lt_ami}"
-    instance_type          = "${var.front_ec2_lt_instance_type}"
-    key_name               = "${var.front_ec2_lt_ssh_key_name}"
-    vpc_security_group_ids = [aws_security_group.front_sg.id]
-}
-
-
 # RESOURCE: APPLICATION LOAD BALANCER
 
 resource "aws_lb" "front_ec2_lb" {
@@ -69,6 +58,19 @@ resource "aws_lb_listener" "front_ec2_lb_listener" {
 
 
 # RESOURCE: AUTO SCALING GROUP
+
+data "template_file" "user_data_front" {
+  template = file("./modules/front/scripts/user_data.sh")
+}
+
+resource "aws_launch_template" "front_ec2_lt" {
+    name                   = "${var.front_ec2_lt_name}"
+    image_id               = "${var.front_ec2_lt_ami}"
+    instance_type          = "${var.front_ec2_lt_instance_type}"
+    key_name               = "${var.front_ec2_lt_ssh_key_name}"
+    user_data              = base64encode(data.template_file.user_data_front.rendered)
+    vpc_security_group_ids = [aws_security_group.front_sg.id]
+}
 
 resource "aws_autoscaling_group" "front_ec2_asg" {
     name                = "${var.front_ec2_asg_name}"
