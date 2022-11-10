@@ -1,24 +1,27 @@
+# RESOURCE: SECURITY GROUP
+
+resource "aws_security_group" "data_sg" {
+    vpc_id = "${var.network_vpc_id}"
+    egress {
+        from_port   = "${var.data_sg_port_all}"
+        to_port     = "${var.data_sg_port_all}"
+        protocol    = "${var.data_sg_protocol_any}"
+        cidr_blocks = ["${var.data_sg_cidr_all}"]
+    }
+    ingress {
+        from_port   = "${var.data_sg_port_all}"
+        to_port     = "${var.data_sg_port_all}"
+        protocol    = "${var.data_sg_protocol_any}"
+        cidr_blocks = ["${var.network_vpc_cidr}"]
+    }
+}
+
+
 # RESOURCE: DB SUBNET GROUP
 
 resource "aws_db_subnet_group" "rds_sn_group" {
     name       = "${var.rds_sn_group_name}"
-    subnet_ids = ["${var.vpc_sn_priv_az1_id}", "${var.vpc_sn_priv_az2_id}"]
-}
-
-
-# RESOURCE: DB PARAMETER GROUP
-
-resource "aws_db_parameter_group" "rds_param_group" {
-    name   = "${var.rds_param_group_name}"
-    family = "${var.rds_family}"
-    parameter {
-        name  = "character_set_server"
-        value = "${var.rds_charset}"
-    }
-    parameter {
-        name  = "character_set_database"
-        value = "${var.rds_charset}"
-    }
+    subnet_ids = ["${var.network_vpc_sn_az1_priv2_id}", "${var.network_vpc_sn_az2_priv2_id}"]
 }
 
 
@@ -40,5 +43,5 @@ resource "aws_db_instance" "rds_dbinstance" {
     multi_az               = "${var.rds_multi_az}"
     db_subnet_group_name   = aws_db_subnet_group.rds_sn_group.name
     parameter_group_name   = aws_db_parameter_group.rds_param_group.name
-    vpc_security_group_ids = ["${var.vpc_sg_priv_id}"]
+    vpc_security_group_ids = [aws_security_group.data_sg.id]
 }

@@ -6,7 +6,7 @@ variable "network_vpc_sn_az1_priv1_id" {}
 variable "network_vpc_sn_az2_priv1_id" {}
 
 
-# COMPUTE VARS DEFAULT VALUES
+# BACK VARS DEFAULT VALUES
 
 variable "back_ec2_lt_name" {
     type    = string

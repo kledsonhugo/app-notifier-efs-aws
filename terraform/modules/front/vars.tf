@@ -6,7 +6,7 @@ variable "network_vpc_sn_az1_pub_id" {}
 variable "network_vpc_sn_az2_pub_id" {}
 
 
-# COMPUTE VARS DEFAULT VALUES
+# FRONT VARS DEFAULT VALUES
 
 variable "front_ec2_lt_name" {
     type    = string

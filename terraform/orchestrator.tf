@@ -49,38 +49,16 @@ module "back" {
     network_vpc_sn_az2_priv1_id   = "${module.network.vpc_sn_az2_priv1_id}"
 }
 
-# module "database" {
-#     source               = "./modules/database"
-#     rds_identifier       = "${var.rds_identifier}"
-#     rds_sn_group_name    = "${var.rds_sn_group_name}"
-#     rds_param_group_name = "${var.rds_param_group_name}"
-#     rds_dbname           = "${var.rds_dbname}"
-#     rds_dbuser           = "${var.rds_dbuser}"
-#     rds_dbpassword       = "${var.rds_dbpassword}"
-#     vpc_sn_priv_az1_id   = "${module.network.vpc_sn_priv_az1_id}"
-#     vpc_sn_priv_az2_id   = "${module.network.vpc_sn_priv_az2_id}"
-#     vpc_sg_priv_id       = "${module.network.vpc_sg_priv_id}"
-# }
-
-# module "compute" {
-#     source                   = "./modules/compute"
-#     ec2_lt_name              = "${var.ec2_lt_name}"
-#     ec2_lt_ami               = "${var.ec2_lt_ami}"
-#     ec2_lt_instance_type     = "${var.ec2_lt_instance_type}"
-#     ec2_lt_ssh_key_name      = "${var.ec2_lt_ssh_key_name}"
-#     ec2_lb_name              = "${var.ec2_lb_name}"
-#     ec2_lb_tg_name           = "${var.ec2_lb_tg_name}"
-#     ec2_asg_name             = "${var.ec2_asg_name}"
-#     ec2_asg_desired_capacity = "${var.ec2_asg_desired_capacity}"
-#     ec2_asg_min_size         = "${var.ec2_asg_min_size}"
-#     ec2_asg_max_size         = "${var.ec2_asg_max_size}"
-#     vpc_cidr                 = "${var.vpc_cidr}"
-#     vpc_id                   = "${module.network.vpc_id}"
-#     vpc_sn_pub_az1_id        = "${module.network.vpc_sn_pub_az1_id}"
-#     vpc_sn_pub_az2_id        = "${module.network.vpc_sn_pub_az2_id}"
-#     vpc_sg_pub_id            = "${module.network.vpc_sg_pub_id}"
-#     rds_endpoint             = "${module.database.rds_endpoint}"
-#     rds_dbuser               = "${var.rds_dbuser}"
-#     rds_dbpassword           = "${var.rds_dbpassword}"
-#     rds_dbname               = "${var.rds_dbname}"
-# }
+module "data" {
+    source                      = "./modules/data"
+    rds_identifier              = "${var.rds_identifier}"
+    rds_sn_group_name           = "${var.rds_sn_group_name}"
+    rds_param_group_name        = "${var.rds_param_group_name}"
+    rds_dbname                  = "${var.rds_dbname}"
+    rds_dbuser                  = "${var.rds_dbuser}"
+    rds_dbpassword              = "${var.rds_dbpassword}"
+    network_vpc_cidr            = "${var.vpc_cidr}"
+    network_vpc_id              = "${module.network.vpc_id}"
+    network_vpc_sn_az1_priv2_id = "${module.network.vpc_sn_az1_priv2_id}"
+    network_vpc_sn_az2_priv2_id = "${module.network.vpc_sn_az2_priv2_id}"
+}

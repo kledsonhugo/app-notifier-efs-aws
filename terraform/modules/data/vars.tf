@@ -1,8 +1,9 @@
 # NETWORK VARS DEFAULT VALUES (INPUT IS REQUIRED BECAUSE NO DEFAULT IS DEFINED)
 
-variable "vpc_sn_priv_az1_id" {}
-variable "vpc_sn_priv_az2_id" {}
-variable "vpc_sg_priv_id" {}
+variable "network_vpc_cidr" {}
+variable "network_vpc_id" {}
+variable "network_vpc_sn_az1_priv2_id" {}
+variable "network_vpc_sn_az2_priv2_id" {}
 
 
 # DATABASE VARS DEFAULT VALUES
@@ -90,4 +91,37 @@ variable "rds_dbpassword" {
 variable "rds_multi_az" {
     type    = bool
     default = true
+}
+
+
+# SECURITY GROUP VARS DEFAULT VALUES
+
+variable "data_sg_cidr_all" {
+    type    = string
+    default = "0.0.0.0/0"
+}
+
+variable "data_sg_port_all" {
+    type    = number
+    default = 0
+}
+
+variable "data_sg_port_ssh" {
+    type    = number
+    default = 22
+}
+
+variable "data_sg_port_http" {
+    type    = number
+    default = 80
+}
+
+variable "data_sg_protocol_any" {
+    type    = string
+    default = "-1"
+}
+
+variable "data_sg_protocol_tcp" {
+    type    = string
+    default = "tcp"
 }
