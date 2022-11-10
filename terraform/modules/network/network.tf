@@ -44,7 +44,7 @@ resource "aws_subnet" "sn_az2_priv1" {
 resource "aws_subnet" "sn_az1_priv2" {
     vpc_id                  = aws_vpc.vpc.id
     availability_zone       = "${var.vpc_sn_az1}"
-    cidr_block              = "${var.vpc_sn_az1_priv1_cidr}"
+    cidr_block              = "${var.vpc_sn_az1_priv2_cidr}"
 }
 
 resource "aws_subnet" "sn_az2_priv2" {
