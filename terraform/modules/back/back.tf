@@ -94,7 +94,7 @@ resource "aws_lb_listener" "back_ec2_lb_listener" {
 # RESOURCE: AUTO SCALING GROUP
 
 data "template_file" "user_data" {
-  template = file("./back/scripts/user_data.sh")
+  template = file("./modules/back/scripts/user_data.sh")
   vars = {
     efs_id = aws_efs_file_system.efs.id
   }
