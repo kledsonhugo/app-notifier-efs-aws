@@ -13,6 +13,25 @@ module "network" {
     vpc_sn_az2_priv2_cidr = "${var.vpc_sn_az2_priv2_cidr}"
 }
 
+module "front" {
+    source                   = "./modules/front"
+    front_ec2_lt_name              = "${var.front_ec2_lt_name}"
+    front_ec2_lt_ami               = "${var.front_ec2_lt_ami}"
+    front_ec2_lt_instance_type     = "${var.front_ec2_lt_instance_type}"
+    front_ec2_lt_ssh_key_name      = "${var.front_ec2_lt_ssh_key_name}"
+    front_ec2_lb_name              = "${var.front_ec2_lb_name}"
+    front_ec2_lb_tg_name           = "${var.front_ec2_lb_tg_name}"
+    front_ec2_asg_name             = "${var.front_ec2_asg_name}"
+    front_ec2_asg_desired_capacity = "${var.front_ec2_asg_desired_capacity}"
+    front_ec2_asg_min_size         = "${var.front_ec2_asg_min_size}"
+    front_ec2_asg_max_size         = "${var.front_ec2_asg_max_size}"
+    network_vpc_cidr               = "${var.vpc_cidr}"
+    network_vpc_id                 = "${module.network.vpc_id}"
+    network_vpc_sn_az1_pub_id      = "${module.network.vpc_sn_az1_pub_id}"
+    network_vpc_sn_az2_pub_id      = "${module.network.vpc_sn_az2_pub_id}"
+    network_vpc_sg_pub_id          = "${module.network.vpc_sg_pub_id}"
+}
+
 # module "database" {
 #     source               = "./modules/database"
 #     rds_identifier       = "${var.rds_identifier}"

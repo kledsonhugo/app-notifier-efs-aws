@@ -81,52 +81,52 @@ variable "vpc_sn_az2_priv2_cidr" {
 
 # COMPUTE VARS CUSTOM VALUES
 
-# variable "ec2_lt_name" {
-#     type    = string
-#     default = "ec2-lt-notifier"
-# }
+variable "front_ec2_lt_name" {
+    type    = string
+    default = "front-ec2-lt-notifier"
+}
 
-# variable "ec2_lt_ami" {
-#     type    = string
-#     default = "ami-05fa00d4c63e32376"
-# }
+variable "front_ec2_lt_ami" {
+    type    = string
+    default = "ami-05fa00d4c63e32376"
+}
 
-# variable "ec2_lt_instance_type" {
-#     type    = string
-#     default = "t2.micro"
-# }
+variable "front_ec2_lt_instance_type" {
+    type    = string
+    default = "t2.micro"
+}
 
-# variable "ec2_lt_ssh_key_name" {
-#     type    = string
-#     default = "vockey"
-# }
+variable "front_ec2_lt_ssh_key_name" {
+    type    = string
+    default = "vockey"
+}
 
-# variable "ec2_lb_name" {
-#     type    = string
-#     default = "ec2-lb-notifier"
-# }
+variable "front_ec2_lb_name" {
+    type    = string
+    default = "front-ec2-lb-notifier"
+}
 
-# variable "ec2_lb_tg_name" {
-#     type    = string
-#     default = "ec2-lb-tg-notifier"
-# }
+variable "front_ec2_lb_tg_name" {
+    type    = string
+    default = "front-ec2-lb-tg-notifier"
+}
 
-# variable "ec2_asg_name" {
-#     type    = string
-#     default = "ec2-asg-notifier"
-# }
+variable "front_ec2_asg_name" {
+    type    = string
+    default = "front-ec2-asg-notifier"
+}
 
-# variable "ec2_asg_desired_capacity" {
-#     type    = number
-#     default = 4
-# }
+variable "front_ec2_asg_desired_capacity" {
+    type    = number
+    default = 4
+}
 
-# variable "ec2_asg_min_size" {
-#     type    = number
-#     default = 2
-# }
+variable "front_ec2_asg_min_size" {
+    type    = number
+    default = 2
+}
 
-# variable "ec2_asg_max_size" {
-#     type    = number
-#     default = 8
-# }
+variable "front_ec2_asg_max_size" {
+    type    = number
+    default = 8
+}
