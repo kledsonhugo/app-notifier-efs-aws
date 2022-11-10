@@ -54,6 +54,19 @@ resource "aws_subnet" "sn_az2_priv2" {
 }
 
 
+# RESOURCE: NAT GATEWAY
+
+resource "aws_eip" "eip_ngw_pub" {
+    depends_on = [aws_internet_gateway.igw]
+}
+
+resource "aws_nat_gateway" "ngw_pub" {
+    allocation_id = aws_eip.eip_ngw_pub.id
+    subnet_id     = aws_subnet.sn_az1_pub.id
+    depends_on    = [aws_internet_gateway.igw]
+}
+
+
 # RESOURCE: ROUTE TABLES FOR THE SUBNETS
 
 resource "aws_route_table" "rt_pub" {
@@ -66,6 +79,10 @@ resource "aws_route_table" "rt_pub" {
 
 resource "aws_route_table" "rt_priv" {
     vpc_id = aws_vpc.vpc.id
+    route {
+        cidr_block = "${var.vpc_cidr_all}"
+        gateway_id = aws_nat_gateway.ngw_pub.id
+    }
 }
 
 
@@ -99,30 +116,4 @@ resource "aws_route_table_association" "rt_priv_sn_az1_priv2" {
 resource "aws_route_table_association" "rt_priv_sn_az2_priv2" {
   subnet_id      = aws_subnet.sn_az2_priv2.id
   route_table_id = aws_route_table.rt_priv.id
-}
-
-
-# RESOURCE: ELASTIC IPs
-
-resource "aws_eip" "eip_ngw_az1_pub" {
-    depends_on = [aws_internet_gateway.igw]
-}
-
-resource "aws_eip" "eip_ngw_az2_pub" {
-    depends_on = [aws_internet_gateway.igw]
-}
-
-
-# RESOURCE: NAT GATEWAYS 
-
-resource "aws_nat_gateway" "ngw_az1_pub" {
-    allocation_id = aws_eip.eip_ngw_az1_pub.id
-    subnet_id     = aws_subnet.sn_az1_pub.id
-    depends_on = [aws_internet_gateway.igw]
-}
-
-resource "aws_nat_gateway" "ngw_az2_pub" {
-    allocation_id = aws_eip.eip_ngw_az2_pub.id
-    subnet_id     = aws_subnet.sn_az2_pub.id
-    depends_on = [aws_internet_gateway.igw]
 }
