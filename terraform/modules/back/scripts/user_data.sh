@@ -10,7 +10,7 @@ while (( $x > 0 )); do
   mount -fav
   mnt=`df -h |grep /mnt/efs |wc -l`
   if (( $mnt >= 1 )); then
-    mkdir /mnt/efs/html
+    [ ! -d "/mnt/efs/html" ] && mkdir /mnt/efs/html
     echo "Notifier app" > /mnt/efs/html/index.html
     rm -rf /var/www/html/
     ln -s /mnt/efs/html/ /var/www/html

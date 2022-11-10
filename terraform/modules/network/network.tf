@@ -54,14 +54,24 @@ resource "aws_subnet" "sn_az2_priv2" {
 }
 
 
-# RESOURCE: NAT GATEWAY
+# RESOURCE: NAT GATEWAYS
 
-resource "aws_eip" "eip_ngw_pub" {
+resource "aws_eip" "eip_ngw_az1_pub" {
     depends_on = [aws_internet_gateway.igw]
 }
 
-resource "aws_nat_gateway" "ngw_pub" {
-    allocation_id = aws_eip.eip_ngw_pub.id
+resource "aws_nat_gateway" "ngw_az1_pub" {
+    allocation_id = aws_eip.eip_ngw_az1_pub.id
+    subnet_id     = aws_subnet.sn_az1_pub.id
+    depends_on    = [aws_internet_gateway.igw]
+}
+
+resource "aws_eip" "eip_ngw_az1_pub" {
+    depends_on = [aws_internet_gateway.igw]
+}
+
+resource "aws_nat_gateway" "ngw_az1_pub" {
+    allocation_id = aws_eip.eip_ngw_az1_pub.id
     subnet_id     = aws_subnet.sn_az1_pub.id
     depends_on    = [aws_internet_gateway.igw]
 }
@@ -77,11 +87,19 @@ resource "aws_route_table" "rt_pub" {
     }
 }
 
-resource "aws_route_table" "rt_priv" {
+resource "aws_route_table" "rt_az1_priv" {
     vpc_id = aws_vpc.vpc.id
     route {
         cidr_block = "${var.vpc_cidr_all}"
-        gateway_id = aws_nat_gateway.ngw_pub.id
+        gateway_id = aws_nat_gateway.ngw_az1_pub.id
+    }
+}
+
+resource "aws_route_table" "rt_az2_priv" {
+    vpc_id = aws_vpc.vpc.id
+    route {
+        cidr_block = "${var.vpc_cidr_all}"
+        gateway_id = aws_nat_gateway.ngw_az2_pub.id
     }
 }
 
@@ -100,20 +118,20 @@ resource "aws_route_table_association" "rt_pub_sn_az2_pub" {
 
 resource "aws_route_table_association" "rt_priv_sn_az1_priv1" {
   subnet_id      = aws_subnet.sn_az1_priv1.id
-  route_table_id = aws_route_table.rt_priv.id
+  route_table_id = aws_route_table.rt_az1_priv.id
 }
 
 resource "aws_route_table_association" "rt_priv_sn_az2_priv1" {
   subnet_id      = aws_subnet.sn_az2_priv1.id
-  route_table_id = aws_route_table.rt_priv.id
+  route_table_id = aws_route_table.rt_az2_priv.id
 }
 
 resource "aws_route_table_association" "rt_priv_sn_az1_priv2" {
   subnet_id      = aws_subnet.sn_az1_priv2.id
-  route_table_id = aws_route_table.rt_priv.id
+  route_table_id = aws_route_table.rt_az1_priv.id
 }
 
 resource "aws_route_table_association" "rt_priv_sn_az2_priv2" {
   subnet_id      = aws_subnet.sn_az2_priv2.id
-  route_table_id = aws_route_table.rt_priv.id
+  route_table_id = aws_route_table.rt_az2_priv.id
 }
