@@ -113,7 +113,7 @@ resource "aws_eip" "eip_ngw_az2_pub" {
 }
 
 
-# RESOURCE: NAT GATEWAYS
+# RESOURCE: NAT GATEWAYS 
 
 resource "aws_nat_gateway" "ngw_az1_pub" {
     allocation_id = aws_eip.eip_ngw_az1_pub.id
