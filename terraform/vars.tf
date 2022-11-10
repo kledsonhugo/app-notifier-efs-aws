@@ -63,6 +63,11 @@ variable "rds_param_group_name" {
     default = "rds-param-group-notifier"
 }
 
+variable "rds_multi_az" {
+    type    = bool
+    default = false
+}
+
 variable "rds_dbname" {
     type    = string
     default = "rdsdbnotifier"

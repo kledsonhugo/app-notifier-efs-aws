@@ -40,7 +40,7 @@ resource "aws_db_instance" "rds_dbinstance" {
     username               = "${var.rds_dbuser}"
     password               = "${var.rds_dbpassword}"
     skip_final_snapshot    = "${var.rds_skip_final_snapshot}"
-#    multi_az               = "${var.rds_multi_az}"
+    multi_az               = "${var.rds_multi_az}"
     db_subnet_group_name   = aws_db_subnet_group.rds_sn_group.name
     vpc_security_group_ids = [aws_security_group.data_sg.id]
 }

@@ -55,6 +55,7 @@ module "data" {
     rds_identifier                = "${var.rds_identifier}"
     rds_sn_group_name             = "${var.rds_sn_group_name}"
     rds_param_group_name          = "${var.rds_param_group_name}"
+    rds_multi_az                  = "${var.rds_multi_az}"
     rds_dbname                    = "${var.rds_dbname}"
     rds_dbuser                    = "${var.rds_dbuser}"
     rds_dbpassword                = "${var.rds_dbpassword}"
