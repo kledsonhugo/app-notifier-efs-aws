@@ -3,6 +3,7 @@ yum update -y
 amazon-linux-extras install -y epel
 yum install -y amazon-efs-utils httpd telnet tree
 systemctl enable httpd
+service httpd start
 mkdir /mnt/efs
 echo "${efs_id}:/ /mnt/efs efs _netdev,noresvport,tls 0 0" >> /etc/fstab
 x=10
