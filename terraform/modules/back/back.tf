@@ -73,6 +73,7 @@ resource "aws_efs_mount_target" "efs-mount-az2" {
 resource "aws_lb" "back_ec2_lb" {
     name               = "${var.back_ec2_lb_name}"
     load_balancer_type = "application"
+    internal           = true
     subnets            = ["${var.network_vpc_sn_az1_priv1_id}", "${var.network_vpc_sn_az2_priv1_id}"]
     security_groups    = [aws_security_group.back_sg.id]
 }
