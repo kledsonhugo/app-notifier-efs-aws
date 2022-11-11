@@ -2,6 +2,8 @@
 
 variable "network_vpc_sn_az1_pub_cidr" {}
 variable "network_vpc_sn_az2_pub_cidr" {}
+variable "network_vpc_sn_az1_priv1_cidr" {}
+variable "network_vpc_sn_az2_priv1_cidr" {}
 variable "network_vpc_id" {}
 variable "network_vpc_sn_az1_priv1_id" {}
 variable "network_vpc_sn_az2_priv1_id" {}

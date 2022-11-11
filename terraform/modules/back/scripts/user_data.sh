@@ -12,7 +12,7 @@ while (( $x > 0 )); do
   mnt=`df -h |grep /mnt/efs |wc -l`
   if (( $mnt >= 1 )); then
     [ ! -d "/mnt/efs/html" ] && mkdir /mnt/efs/html
-    echo "Notifier app" > /mnt/efs/html/index.html
+    echo "Notifier app backend" > /mnt/efs/html/index.html
     rm -rf /var/www/html/
     ln -s /mnt/efs/html/ /var/www/html
     service httpd restart

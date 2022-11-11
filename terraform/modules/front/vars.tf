@@ -1,6 +1,7 @@
 # NETWORK VARS DEFAULT VALUES (INPUT IS REQUIRED BECAUSE NO DEFAULT IS DEFINED)
 
-variable "network_vpc_cidr" {}
+variable "network_vpc_sn_az1_pub_cidr" {}
+variable "network_vpc_sn_az2_pub_cidr" {}
 variable "network_vpc_id" {}
 variable "network_vpc_sn_az1_pub_id" {}
 variable "network_vpc_sn_az2_pub_id" {}
